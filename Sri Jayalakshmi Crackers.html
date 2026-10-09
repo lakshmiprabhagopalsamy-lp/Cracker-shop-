@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sri Jayalakshmi Crackers - Place Order</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fff8ee;--card:#fff;--ink:#2b1d12;--mut:#7a6650;--acc:#d9480f;--line:#ecd9bf}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1610;--card:#2a2018;--ink:#f6ead9;--mut:#bba58a;--acc:#ff8a4c;--line:#4a3a2b}}
+:root[data-theme="dark"]{--bg:#1d1610;--card:#2a2018;--ink:#f6ead9;--mut:#bba58a;--acc:#ff8a4c;--line:#4a3a2b}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:820px;margin:0 auto;padding:14px}
+h1{margin:6px 0 2px;font-size:22px;color:var(--acc)}.sub{color:var(--mut);font-size:14px;margin-bottom:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:14px}
+label{font-size:13px;color:var(--mut);display:block;margin:8px 0 3px}
+input,textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font-size:16px;background:var(--bg);color:var(--ink)}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:540px}
+th,td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left}
+th{font-size:12px;color:var(--mut);text-transform:uppercase}
+td.n,th.n{text-align:right}
+tr.sec td{background:var(--bg);color:var(--acc);font-weight:700;font-size:13px}
+.q{width:70px;text-align:center;padding:7px}
+.sum div{display:flex;justify-content:space-between;padding:6px 0;font-size:16px}
+.sum .disc{color:#2b8a3e}.sum .tot{font-size:20px;font-weight:700;border-top:2px solid var(--acc);margin-top:4px;padding-top:10px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+button{flex:1;min-width:160px;padding:13px;border:0;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;background:var(--acc);color:#fff}
+button.alt{background:transparent;color:var(--acc);border:2px solid var(--acc)}
+.wa{background:#25a244}
+.err{color:#c92a2a;font-size:14px;min-height:18px;margin:6px 0}
+#bill{display:none;--card:#fff;--ink:#222;--mut:#555;--line:#bbb;background:#fff;color:#222;padding:18px}
+#bill h2{margin:0;color:var(--acc)}#bill .meta{font-size:13px;color:#555;margin-top:2px}
+#bill table{border:1px solid #aaa;margin-top:12px;min-width:0;width:100%}
+@media (max-width:600px){#bill{padding:10px}#bill h2{font-size:20px}#bill th,#bill td{padding:6px 4px;font-size:12px}#bill th{font-size:10px}#bill .t div{gap:10px;font-size:14px}#bill .t div b{min-width:84px}}
+#bill th,#bill td{border:1px solid #bbb;padding:8px 7px;color:#222}
+#bill th{background:#f4f4f4;font-size:11px;color:#444}
+#bill .t div{display:flex;justify-content:flex-end;gap:30px;padding:5px 4px;font-size:15px}
+#bill .t div b{min-width:110px;text-align:right;font-family:ui-monospace,Consolas,monospace}
+#bill .t .g{border-top:1px solid #888;margin-top:6px;padding-top:10px;font-weight:700;font-size:17px}
+#bill .ft{border-top:1px solid #888;margin-top:16px;padding-top:10px;text-align:center;font-size:13px;color:#333;line-height:1.6}
+.billcopy{--card:#fff;--ink:#222;--mut:#555;--line:#bbb;background:#fff;color:#222;padding:18px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.billcopy h2{margin:0;color:var(--acc)}.billcopy .meta{font-size:13px;color:#555;margin-top:2px}
+.billcopy table{border:1px solid #aaa;margin-top:12px;min-width:0;width:100%}
+.billcopy th,.billcopy td{border:1px solid #bbb;padding:8px 7px;color:#222}
+.billcopy th{background:#f4f4f4;font-size:11px;color:#444}
+.billcopy .t div{display:flex;justify-content:flex-end;gap:30px;padding:5px 4px;font-size:15px}
+.billcopy .t div b{min-width:110px;text-align:right;font-family:ui-monospace,Consolas,monospace}
+.billcopy .t .g{border-top:1px solid #888;margin-top:6px;padding-top:10px;font-weight:700;font-size:17px}
+.billcopy .ft{border-top:1px solid #888;margin-top:16px;padding-top:10px;text-align:center;font-size:13px;color:#333;line-height:1.6}
+@media print{body{background:#fff;color:#000}.noprint{display:none!important}#bill{display:block!important;border:0}}
+</style></head>
+<body><div class="wrap">
+
+<div class="noprint">
+<h1>🎆 Sri Jayalakshmi Crackers</h1>
+<div class="sub">Enter the quantity you need. Totals are calculated automatically.</div>
+
+<div class="card">
+  <label>Your name *</label><input id="cname" autocomplete="name">
+  <label>Mobile number *</label><input id="cphone" type="tel" inputmode="numeric" autocomplete="tel">
+  <label>Delivery address *</label><textarea id="caddr" rows="2"></textarea>
+</div>
+
+<div class="card">
+  <input id="search" placeholder="Search item name or number...">
+  <div class="scroll" style="margin-top:8px">
+  <table>
+    <thead><tr><th>S.No</th><th>Product Name</th><th>Per</th><th class="n">Rate ₹</th><th>Qty</th><th class="n">Amount ₹</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+</div>
+
+<div class="card sum">
+  <div><span>Discountable Sub Total</span><b id="sub">0.00</b></div>
+  <div class="disc"><span>Discount (80%)</span><b id="disc">-0.00</b></div>
+  <div><span>Discounted Total</span><b id="dt">0.00</b></div>
+  <div><span>+ Net Rate Items (no discount)</span><b id="net">0.00</b></div>
+  <div class="tot"><span>Grand Total</span><span id="grand">₹0.00</span></div>
+</div>
+
+<div class="err" id="err"></div>
+<div class="btns"><button id="gen">Generate Bill</button></div>
+</div>
+
+<div id="bill"></div>
+<div class="noprint err" id="hint" style="color:var(--ink)"></div>
+<div class="btns noprint" id="after" style="display:none;margin-bottom:30px">
+  <button id="pdf">Create PDF Bill</button>
+  <button class="wa" id="share" style="display:none">Share PDF to Owner (WhatsApp)</button>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+/* ====== OWNER: EDIT THESE ====== */
+const OWNER_WHATSAPP="919788675004";
+const DISCOUNT=80;
+const ADDRESS="Sithurajapuram Village, Kitchanayakanpatti Road, Sivakasi - 626 189";
+const PHONES="9788675004, 9626411127";
+/* line format: no|name|per|rate[|N]   (#TEXT = section heading, empty per = Box, N = net rate, no discount) */
+const DATA=`#ONE SOUND CRACKERS
+1|2¾" Kuruvi|Pkt|45
+2|3½" Lakshmi|Pkt|65
+3|4" Lakshmi 6 Ply|Pkt|105
+4|4" Lakshmi 10 Ply|Pkt|140
+5|4" Gold Lakshmi|Pkt|155
+6|4" Kumki 12 Ply|Pkt|180
+7|4" Jallikattu 16 Ply|Pkt|230
+8|5" Jallikattu 20 Ply|Pkt|260
+9|6" Kungfu Panda & Tiger|Pkt|300
+10|Double Sound|Pkt|200
+#PAPER CRACKERS
+11|5" Spiderman (4 PCs)|Pack|400
+12|¼ Paper Bomb||225
+13|½ Paper Bomb||425
+14|1 Paper Bomb||800
+15|Avatar (10 PCs)||900
+#GIANT & DELUXE
+16|28 Giant|Pkt|125
+17|56 Giant|Pkt|250
+18|24 Deluxe|Pkt|210
+19|50 Deluxe|Pkt|410
+#REPEATING SOUND
+20|100||210
+21|1000 H||800
+22|2000 H||1600
+23|5000 H||3800
+24|10000 H||7500
+#BIGILI CRACKERS
+25|Red Bigili (100 PCs)|Pack|180
+26|Stripped Bigili (100 PCs)|Pack|190
+#ATOM BOMB
+27|Mega Bullet Bomb||220
+28|Hydro Bomb||350
+29|King of King||450
+30|Classic Bomb||550
+31|Digital Bomb||1100
+32|555 Bomb (5 PCs)||225
+33|Smoke Cylinder Bomb|1 PC|650
+34|Jug Mug Bomb||450
+35|Rocket Bomb||325
+36|Lunic Express||500
+37|Whistling Rocket||580
+38|Colour Rocket||375
+#TWINKLING STAR
+39|1½" Twinkling Star||180
+40|4" Twinkling Star||425
+#GROUND CHAKKAR
+41|Ground Chakkar Big||190
+42|Ground Chakkar Special||350
+43|Ground Chakkar Deluxe||650
+44|Spinner Special||500
+45|Avenger Wheel||550
+46|Recycle||800
+#FLOWER POTS
+47|Flower Pot Big||370
+48|Flower Pot Special||550
+49|Flower Pot Asoka||650
+50|Flower Pot Deluxe (10 PCs)||1300
+51|Flower Pot Colour Kotti||1000
+52|Flower Pot Super Deluxe (2 PCs)||600
+53|Flower Pot Jumbo (10 PCs)||2000
+#ATTRACTIVE FANCY NIGHT
+54|Multi Colour Shower 5 in 1 (5 PCs)||475
+55|Multi Colour Shower (1 PC)||300
+56|Tri Colour (5 PCs)||1100
+57|6" Mega King Star Crackling (3 PCs)||1400
+58|Ganga Yamuna (5 PCs)||400
+59|Chocolate Shower (5 PCs)||1000
+60|Butterfly (10 PCs)||600
+61|Helicopter (5 PCs)||450
+62|Pambaram (10 PCs)||700
+63|Bat & Ball|Pack|600
+64|Multi Colour Mini Tin|1 PC|400
+65|4" Master Tin|1 PC|475
+66|4" Water Queen|1 PC|550
+67|Crackling Star Tin|1 PC|750
+68|Star Dom Tin|1 PC|1000
+69|Peacock Multi Colour (3 Eyes)||700
+70|Bada Peacock (5 Eyes)||1500
+71|Peacock Feather (5 PCs)||550
+72|Magic Peacock (5 Eyes)||900
+73|4×4 Wheel (5 PCs)||900
+74|Selfie Stick (3 PCs)||225
+75|Photo Flash (5 PCs)||275
+76|Double Colour Smoke (3 PCs)||650
+77|Waterfalls Pencil (3 PCs)||750
+78|Sivakasi Special (2 PCs)||1100
+79|Kaththi Vaal||850
+#KIDS SPECIAL
+80|Fire Egg||700
+81|Emmu Egg (2 PCs)||1000
+82|Guitar||1000
+83|Money Bank (3 PCs)||850
+84|Black Money (2 PCs)||1000
+85|Motu Patlu (2 PCs)||1100
+86|Dora Singer (5 PCs)||800
+87|Shinchan (5 PCs)||600
+88|Icone (2 PCs)||1000
+89|Pistol 5G (2 PCs)||1250
+90|Hanuman Kathai||1000
+91|Watermelon||950
+92|Car||2000
+93|Old is Gold||750
+#MULTI COLOUR SHOT
+94|7 Shot Multi Colour (5 PCs)||450
+95|12 Shot Rider (Red, Green Ball)||850
+96|30 Shot Multi Colour||2000
+97|30 Shot Special||2350
+98|60 Shot Multi Colour||4000
+99|120 Shot Multi Colour||7500
+100|150 Shot Gujarat Festival||9000
+#NIGHT ANGEL PIPE
+101|Cool Colour Collections (5 PCs)||1000
+102|Chotta Fancy||200
+103|2" All Varieties (3 PCs)||1050
+104|2" Single piece||375
+105|3½ Nayagara||1200
+106|3½ Digital Star||1200
+107|3½ Violet Glory||1200
+108|3½ Terror (Red)||1200
+109|3½ Mercury Flash (Crackling)||1200
+110|3½ Golden Glory||1200
+111|3½ Killer (Green)||1200
+112|3½ The King (Red & Green)||1200
+113|3½ Sizzling||1200
+114|3½ Rolls-Royce (2 PCs)||2400
+115|3½ BMW (2 PCs)||2400
+116|3½ Jaguar (2 PCs)||2400
+117|3½ Lamborghini (2 PCs)||2400
+118|3½ Ferrari (2 PCs)||2400
+119|4" Fancy||1500
+#SPARKLERS
+120|10 cm Electric Sparklers||110
+121|10 cm Colour Sparklers||115
+122|10 cm Green Sparklers||125
+123|10 cm Red Sparklers||135
+124|12 cm Electric Sparklers||135
+125|12 cm Colour Sparklers||145
+126|12 cm Green Sparklers||155
+127|12 cm Red Sparklers||170
+128|15 cm Electric Sparklers||230
+129|15 cm Colour Sparklers||245
+130|15 cm Green Sparklers||255
+131|15 cm Red Sparklers||270
+132|30 cm Electric Sparklers||230
+133|30 cm Colour Sparklers||245
+134|30 cm Green Sparklers||255
+135|30 cm Red Sparklers||270
+136|50 cm Electric Sparklers||850
+137|50 cm Colour Sparklers||900
+138|Rotating Sparklers||1000
+#GIFT BOX - NET RATE (NO DISCOUNT)
+139|45 Items Gift Box (NET)||650|N
+140|50 Items Gift Box (NET)||750|N`;
+/* =============================== */
+const $=id=>document.getElementById(id);
+const fmt=n=>n.toLocaleString("en-IN",{minimumFractionDigits:2,maximumFractionDigits:2});
+const ITEMS=[],tb=$("rows");
+DATA.split("\n").forEach(l=>{
+  if(l[0]==="#"){const tr=document.createElement("tr");tr.className="sec";tr.innerHTML=`<td colspan="6">${l.slice(1)}</td>`;tb.appendChild(tr);return}
+  const p=l.split("|"),i=ITEMS.length;
+  ITEMS.push({no:+p[0],name:p[1],per:p[2]||"Box",rate:+p[3],net:p[4]==="N"});
+  const tr=document.createElement("tr");tr.dataset.s=(p[0]+" "+p[1]).toLowerCase();
+  tr.innerHTML=`<td>${p[0]}</td><td>${p[1]}</td><td>${p[2]||"Box"}</td><td class="n">${fmt(+p[3])}</td>
+  <td><input class="q" type="number" min="0" inputmode="numeric" data-i="${i}" placeholder="0"></td><td class="n" id="t${i}">0.00</td>`;
+  tb.appendChild(tr);
+});
+function calc(){
+  let ds=0,nt=0;
+  document.querySelectorAll(".q").forEach(q=>{
+    const it=ITEMS[+q.dataset.i],n=Math.max(0,parseInt(q.value)||0),t=n*it.rate;
+    $("t"+q.dataset.i).textContent=fmt(t);
+    if(it.net)nt+=t;else ds+=t;
+  });
+  const d=ds*DISCOUNT/100,dt=ds-d;
+  $("sub").textContent=fmt(ds);$("disc").textContent="-"+fmt(d);$("dt").textContent=fmt(dt);$("net").textContent=fmt(nt);$("grand").textContent="₹"+fmt(dt+nt);
+  return {ds,d,dt,nt,grand:dt+nt};
+}
+tb.addEventListener("input",calc);
+$("search").addEventListener("input",e=>{
+  const s=e.target.value.trim().toLowerCase();
+  tb.querySelectorAll("tr").forEach(tr=>{
+    if(tr.className==="sec")tr.style.display=s?"none":"";
+    else tr.style.display=(!s||tr.dataset.s.includes(s))?"":"none";
+  });
+});
+let order=null;
+$("gen").onclick=()=>{
+  const name=$("cname").value.trim(),ph=$("cphone").value.trim(),lines=[];
+  document.querySelectorAll(".q").forEach(q=>{const n=parseInt(q.value)||0;if(n>0){const it=ITEMS[+q.dataset.i];lines.push({...it,qty:n,amt:n*it.rate});}});
+  if(!name){$("err").textContent="Please enter your name.";return}
+  if(ph.replace(/\D/g,"").length<10){$("err").textContent="Please enter a valid mobile number.";return}
+  if(!$("caddr").value.trim()){$("err").textContent="Please enter delivery address.";return}
+  if(!lines.length){$("err").textContent="Please enter quantity for at least one item.";return}
+  $("err").textContent="";
+  const tot=calc(),now=new Date();
+  const no="SJC"+now.getFullYear().toString().slice(2)+String(now.getMonth()+1).padStart(2,"0")+String(now.getDate()).padStart(2,"0")+"-"+Math.floor(1000+Math.random()*9000);
+  const addr=$("caddr").value.trim().replace(/</g,"&lt;"),nm=name.replace(/</g,"&lt;");
+  order={no,name,ph};pdfFile=null;$("share").style.display="none";$("hint").textContent="";
+  $("bill").innerHTML=`<h2>Sri Jayalakshmi Crackers</h2><div style="display:flex;justify-content:space-between;gap:12px;margin-top:8px;font-size:13px;line-height:1.7;color:#333">
+  <div style="min-width:0;flex:1"><div>Customer Name: <b>${nm}</b></div><div>Mobile Number: <b>${ph.replace(/</g,"")}</b></div><div>Delivery Address: <b>${addr}</b></div></div>
+  <div style="text-align:right;white-space:nowrap"><div>DATE: <b>${now.toLocaleDateString("en-IN")}</b></div><div>TIME: <b>${now.toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit"})}</b></div></div></div>
+  <table><thead><tr><th>S.NO</th><th>PRODUCT NAME</th><th>PER</th><th class="n">RATE</th><th class="n">QUANTITY / REQUIREMENT</th><th class="n">AMOUNT</th></tr></thead><tbody>
+  ${lines.map((l,k)=>`<tr><td>${k+1}</td><td>${l.name}</td><td>${l.per}</td><td class="n">${fmt(l.rate)}</td><td class="n">${l.qty}</td><td class="n">${fmt(l.amt)}</td></tr>`).join("")}
+  </tbody></table>
+  <div class="t" style="margin-top:10px">
+  ${tot.ds>0?`<div><span>Discountable Sub Total</span><b>${fmt(tot.ds)}</b></div><div><span>Discount (${DISCOUNT}%)</span><b>-${fmt(tot.d)}</b></div><div><span>Discounted Total</span><b>${fmt(tot.dt)}</b></div>`:""}
+  ${tot.nt>0?`<div><span>${tot.ds>0?"+ ":""}Net Rate Items (no discount)</span><b>${fmt(tot.nt)}</b></div>`:""}
+  <div class="g"><span>Grand Total</span><b>${fmt(tot.grand)}</b></div></div>
+  <div class="ft">${ADDRESS}<br>${PHONES}</div>`;
+  $("bill").style.display="block";$("after").style.display="flex";
+  $("bill").scrollIntoView({behavior:"smooth"});
+};
+let pdfFile=null;
+$("pdf").onclick=async()=>{
+  if(!order)return;
+  const hint=$("hint");hint.textContent="Creating PDF...";
+  try{
+    const host=document.createElement("div");
+    host.style.cssText="position:fixed;left:-10000px;top:0;width:760px;background:#fff";
+    const copy=$("bill").cloneNode(true);copy.style.width="760px";copy.style.display="block";copy.removeAttribute("id");copy.className="billcopy";
+    host.appendChild(copy);document.body.appendChild(host);
+    const canvas=await html2canvas(copy,{backgroundColor:"#ffffff",scale:2,windowWidth:900});
+    host.remove();
+    const pdf=new window.jspdf.jsPDF({unit:"mm",format:"a4"});
+    const M=10,iw=190,pxPer=canvas.width/iw,sliceH=Math.floor(277*pxPer);
+    for(let y=0,pg=0;y<canvas.height;y+=sliceH,pg++){
+      const h=Math.min(sliceH,canvas.height-y),c=document.createElement("canvas");
+      c.width=canvas.width;c.height=h;
+      c.getContext("2d").drawImage(canvas,0,y,canvas.width,h,0,0,canvas.width,h);
+      if(pg>0)pdf.addPage();
+      pdf.addImage(c.toDataURL("image/jpeg",0.95),"JPEG",M,M,iw,h/pxPer);
+    }
+    const blob=pdf.output("blob");
+    pdfFile=new File([blob],"Bill-"+order.no+".pdf",{type:"application/pdf"});
+    const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=pdfFile.name;document.body.appendChild(a);a.click();a.remove();
+    hint.textContent="PDF bill is ready and saved. Now tap Share PDF to Owner.";
+    $("share").style.display="";
+  }catch(e){hint.textContent="Could not create the PDF. Please try again.";}
+};
+$("share").onclick=async()=>{
+  if(!pdfFile)return;
+  if(navigator.canShare&&navigator.canShare({files:[pdfFile]})){
+    try{await navigator.share({files:[pdfFile],title:"Order bill"});return}
+    catch(e){if(e&&e.name==="AbortError")return}
+  }
+  $("hint").textContent="WhatsApp is opening. Tap 📎, attach the saved PDF bill and send.";
+  setTimeout(()=>window.open("https://wa.me/"+OWNER_WHATSAPP,"_blank"),800);
+};
+</script></body></html>
